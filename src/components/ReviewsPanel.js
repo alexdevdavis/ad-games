@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 
 export default function ReviewsPanel() {
@@ -6,16 +7,30 @@ export default function ReviewsPanel() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getReviews().then(({ reviews }) => {
-      setReviews(reviews);
-      setIsLoading(false);
-      console.log(reviews);
-    });
+    getReviews()
+      .then(({ reviews }) => {
+        setReviews(reviews);
+        setIsLoading(false);
+        console.log(reviews);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   if (isLoading) {
     return <p className="Loading">Loading ... </p>;
   }
 
-  return <div>Reviews</div>;
+  return (
+    <>
+      <ul className="reviews-panel">
+        {reviews.map((review) => {
+          return (
+            <li key={review.review_id}>
+              <ReviewCard data={review} />
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
 }
