@@ -1,8 +1,63 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  max-height: 200px;
+  padding: 5px;
+  display: grid;
+  grid-template-areas: 
+    'title user'
+    'links links';
+  grid-template-columns: 60% auto;
+}
+
+.header__title {
+  grid-area: title;
+  padding: 5px;
+  text-align:center;
+}
+
+.user-panel {
+  grid-area: user;
+  display: grid;
+  grid-template-areas:
+  'username username'
+  'user-image user-stats'
+  'user-image user-stats';
+}
+
+.user-panel__username {
+  grid-area: username;
+  font-size: 4vw;
+  text-align: right;
+}
+
+.user-panel__user-image {
+  border-radius: 50%;
+  max-width: 50%;
+  grid-area: user-image;
+  margin-left: 45%;
+}
+
+.user-panel__user-comments {
+  grid-area: user-stats;
+  font-size: 2.5vw;
+}
+
+.user-panel__user-votes {
+  grid-area: user-stats;
+  font-size: 2.5vw;
+
+}
+
+.navbar {
+  grid-area: links;
+  padding: 5px;
 }
 
 .navbar__ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }

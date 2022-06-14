@@ -1,17 +1,13 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { Routes, Route, Link } from "react-router-dom";
+import UserPanel from "./UserPanel";
 
 export default function Header() {
   return (
-    <>
-      <h1>AD Games</h1>
-      <NavBar>
-        <Link to="/users/:user_id/profile">my profile</Link>
-        <Link to="/reviews">reviews</Link>
-        <Link to="/categories">categories</Link>
-        <Link to="/users">users</Link>
-      </NavBar>
-    </>
+    <header className="header">
+      <h1 className="header__title">AD Games</h1>
+      <UserPanel />
+      <NavBar />
+    </header>
   );
 }
