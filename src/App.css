@@ -5,22 +5,24 @@
 
 .header {
   max-height: 200px;
-  padding: 5px;
   display: grid;
   grid-template-areas: 
     'title user'
     'links links';
-  grid-template-columns: 60% auto;
+  grid-template-columns: 70% auto;
 }
 
 .header__title {
   grid-area: title;
   padding: 5px;
   text-align:center;
+  background-color: rgb(165, 249, 249);
 }
 
 .user-panel {
   grid-area: user;
+  background-color: rgb(234, 205, 209);
+  padding-right: 10px;
   display: grid;
   grid-template-areas:
   'username username'
@@ -38,7 +40,7 @@
   border-radius: 50%;
   max-width: 50%;
   grid-area: user-image;
-  margin-left: 45%;
+  margin-left: 20%;
 }
 
 .user-panel__user-comments {
@@ -55,9 +57,10 @@
 .navbar {
   grid-area: links;
   padding: 5px;
+  background-color: rgb(236, 236, 178);
 }
 
 .navbar__ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
