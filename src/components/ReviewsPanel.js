@@ -1,10 +1,21 @@
-import {React, useState} from 'react'
+import { React, useEffect, useState } from "react";
+import { getReviews } from "../utils/api";
 
 export default function ReviewsPanel() {
+  const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const [reviews, setReviews] = useState();
+  useEffect(() => {
+    getReviews().then(({ reviews }) => {
+      setReviews(reviews);
+      setIsLoading(false);
+      console.log(reviews);
+    });
+  }, []);
 
-  return (
-    <div>Reviews</div>
-  )
+  if (isLoading) {
+    return <p className="Loading">Loading ... </p>;
+  }
+
+  return <div>Reviews</div>;
 }
