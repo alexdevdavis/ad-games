@@ -11,14 +11,9 @@ export default function ReviewsPanel() {
   const { category_slug } = useParams();
 
   useEffect(() => {
-    getReviews()
+    getReviews(category_slug)
       .then(({ reviews }) => {
-        if (category_slug) {
-          const filteredReviews = dataFilter(reviews, null, category_slug);
-          setReviews(filteredReviews);
-        } else {
-          setReviews(reviews);
-        }
+        setReviews(reviews);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
