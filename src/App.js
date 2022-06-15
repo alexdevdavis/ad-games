@@ -16,13 +16,14 @@ function App() {
   });
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{user, setUser}}>
       <div className="App">
         <Header />
         <Routes>
           <Route path="/" element={<LandingPanel />} />
           <Route path="/reviews" element={<ReviewsPanel />} />
           <Route path="/categories" element={<CategoriesPanel />} />
+          <Route path="/categories/:category_slug" element={<ReviewsPanel />} />
         </Routes>
       </div>
     </UserContext.Provider>

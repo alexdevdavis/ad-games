@@ -27,6 +27,7 @@ li {
   background-color: rgb(165, 249, 249);
 }
 
+/* USER STYLING */
 .user-panel {
   grid-area: user;
   background-color: rgba(180, 87, 227, 0.52);
@@ -73,6 +74,8 @@ li {
   justify-content: space-around;
 }
 
+/* REVIEWS STYLING*/
+
 .reviews-panel {
   display: flex;
   flex-direction: column;
@@ -98,7 +101,6 @@ li {
     'comments comments votes votes'
     ;
 }
-
 
 .review-card__image {
   grid-area: image;
@@ -131,6 +133,22 @@ li {
   grid-area: comments;
 }
 
+/* CATEGORIES STYLING */
+
+.categories-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.categories-panel__category-card {
+  border: 2px solid grey;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
 /* Adustments for larger screen widths */
 
 @media (min-width: 600px) {
@@ -150,5 +168,9 @@ li {
     width: 30%;
     border-radius: 2%;
     padding: 20px;
+  }
+
+  .categories-panel__category-card {
+    max-width: 60%;
   }
 }
