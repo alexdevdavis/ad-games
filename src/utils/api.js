@@ -12,6 +12,12 @@ export const getReviews = (category_slug) => {
     });
 };
 
+export const getReviewById = (review_id) => {
+  return adGamesApi.get(`reviews/${review_id}`).then((res) => {
+    return res.data;
+  });
+};
+
 export const getCategories = () => {
   return adGamesApi.get("/categories").then((res) => {
     return res.data;
