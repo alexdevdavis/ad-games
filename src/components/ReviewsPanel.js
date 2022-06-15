@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
-import dataFilter from "../utils/data-filter";
 
 export default function ReviewsPanel() {
   const [reviews, setReviews] = useState([]);

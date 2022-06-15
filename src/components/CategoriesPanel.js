@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
-import ReviewsPanel from "./ReviewsPanel";
 
 export default function CategoriesPanel() {
   const [categories, setCategories] = useState([]);
