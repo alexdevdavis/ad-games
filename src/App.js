@@ -23,6 +23,7 @@ function App() {
           <Route path="/" element={<LandingPanel />} />
           <Route path="/reviews" element={<ReviewsPanel />} />
           <Route path="/categories" element={<CategoriesPanel />} />
+          <Route path="/categories/:category_slug" element={<ReviewsPanel />} />
         </Routes>
       </div>
     </UserContext.Provider>

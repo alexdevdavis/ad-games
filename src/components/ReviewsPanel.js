@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 
@@ -6,10 +7,13 @@ export default function ReviewsPanel() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { category_slug } = useParams();
+
   useEffect(() => {
     getReviews()
       .then(({ reviews }) => {
         setReviews(reviews);
+        console.log(reviews);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
