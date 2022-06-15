@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import LandingPanel from "./components/LandingPanel";
 import { UserContext } from "../src/contexts/User";
+import CategoriesPanel from "../src/components/CategoriesPanel";
 
 function App() {
   const [user, setUser] = useState({
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPanel />} />
           <Route path="/reviews" element={<ReviewsPanel />} />
+          <Route path="/categories" element={<CategoriesPanel />} />
         </Routes>
       </div>
     </UserContext.Provider>

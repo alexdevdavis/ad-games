@@ -9,3 +9,9 @@ export const getReviews = () => {
     return res.data;
   });
 };
+
+export const getCategories = () => {
+  return adGamesApi.get("/categories").then((res) => {
+    return res.data;
+  });
+};
