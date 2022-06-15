@@ -11,7 +11,6 @@ export default function ReviewsPanel() {
       .then(({ reviews }) => {
         setReviews(reviews);
         setIsLoading(false);
-        console.log(reviews);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -25,7 +24,7 @@ export default function ReviewsPanel() {
       <ul className="reviews-panel">
         {reviews.map((review) => {
           return (
-            <li key={review.review_id}>
+            <li className="reviews-panel__review-card" key={review.review_id}>
               <ReviewCard data={review} />
             </li>
           );
