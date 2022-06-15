@@ -47,7 +47,10 @@ describe("Data Filter", () => {
   test("returns a new array when passed an array", () => {
     expect(dataFilter(categoriesData)).not.toBe(categoriesData);
   });
-  test("returns an array filtered by passed term", () => {
+  test("returns an array filtered by passed object key filter term", () => {
+    expect(dataFilter(categoriesData, "slug", null)).toEqual(categoriesData);
+  });
+  test("returns an array filtered by passed object value filter term", () => {
     expect(dataFilter(categoriesData, null, "dexterity")).toEqual([
       {
         slug: "dexterity",
