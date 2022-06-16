@@ -34,19 +34,20 @@ export default function NewComment({ review, setReview }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input
+    <form onSubmit={handleSubmit} className="new-comment__form">
+      <label className="new-comment__label">write a comment: 
+      </label>
+        <textarea
+          className="new-comment__input"
           required
-          type="textarea"
-          name="comment-text"
           value={newComment}
           onChange={(event) => {
             setNewComment(event.target.value);
           }}
         />
-      </label>
-      <button disabled={isBtnDisabled}>{submitMessage}</button>
+      <button className="new-comment--submit-btn" disabled={isBtnDisabled}>
+        {submitMessage}
+      </button>
     </form>
   );
 }

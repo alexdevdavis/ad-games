@@ -95,11 +95,7 @@ export default function SingleReview() {
             <CommentsPanel />
           </Expandible>
         ) : null}
-        <NewComment
-          className="review-interactions--new-comment"
-          review={review}
-          setReview={setReview}
-        />
+        <NewComment review={review} setReview={setReview} />
       </section>
     </article>
   );
