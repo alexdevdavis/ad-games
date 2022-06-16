@@ -5,6 +5,7 @@ import CommentsPanel from "./CommentsPanel";
 import ErrorPanel from "./ErrorPanel";
 import UserVote from "./UserVote";
 import Expandible from "./Expandible";
+import NewComment from "./NewComment";
 
 export default function SingleReview() {
   const [review, setReview] = useState({});
@@ -94,6 +95,7 @@ export default function SingleReview() {
             <CommentsPanel />
           </Expandible>
         ) : null}
+        <NewComment className="review-interactions--new-comment" />
       </section>
     </article>
   );

@@ -1,29 +1,34 @@
 import { React, useContext, useState } from "react";
-import UserContext from "../contexts/User";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../contexts/User";
 
 export default function NewComment() {
   const { user } = useContext(UserContext);
+  const { review_id } = useParams();
 
-  const [newComment, setNewComment] = useState({});
+  const [newComment, setNewComment] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(newComment);
+    
+    console.log(newComment, "<<<------- new comment text");
+    console.log(user.username, "<<<<----------from this user");
+    console.log(review_id, "<<<<<<<<------- for this review");
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
         <input
-          type="text"
+          type="textarea"
           name="comment-text"
           value={newComment}
           onChange={(event) => {
             setNewComment(event.target.value);
           }}
         />
-        <button>post comment</button>
       </label>
+      <button>post comment</button>
     </form>
   );
 }
