@@ -165,7 +165,8 @@ li {
   'review-details review-details'
   'image image'
   'body body'
-  'game-details game-details' ;
+  'game-details game-details'
+  '. interactions' ;
 }
 
 .review-article__title {
@@ -199,6 +200,15 @@ li {
 .review-article__game-details-card {
   grid-area: game-details;
   padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.review-interactions__vote-count {
+  grid-area: interactions;
+}
+
+.review-interactions--vote {
+  grid-area: interactions;
 }
 
 
