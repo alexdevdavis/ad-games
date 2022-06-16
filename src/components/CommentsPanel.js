@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComments } from "../utils/api";
+import CommentCard from "./CommentCard";
 
 export default function CommentsPanel() {
   const [comments, setComments] = useState([]);

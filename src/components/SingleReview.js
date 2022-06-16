@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewById, patchUpvote } from "../utils/api";
+import CommentsPanel from "./CommentsPanel";
 import ErrorPanel from "./ErrorPanel";
 import UserVote from "./UserVote";
+import Expandible from "./Expandible";
 
 export default function SingleReview() {
   const [review, setReview] = useState({});
@@ -65,10 +67,6 @@ export default function SingleReview() {
       </section>
       <section className="review-article__review-details-card">
         <p className="review-details-card__date">{date}</p>
-        <p className="review-details-card__votes">{optimisticVotes} votes</p>
-        <p className="review-details-card__comments">
-          {review.comment_count} comments
-        </p>
       </section>
       <img
         className="review-article__image"
@@ -76,7 +74,7 @@ export default function SingleReview() {
         alt={`${review.owner}'s pictoral representation of this ${review.category} game`}
       />
       <p className="review-article__body-text">{review.review_body}</p>
-      <section className="review-interactions">
+      <section className="review-interactions__votes">
         <p className="review-interactions__vote-count">
           {optimisticVotes} votes
         </p>
@@ -86,9 +84,14 @@ export default function SingleReview() {
           isDisabled={isVoteDisabled}
           btnMessage={voteMessage}
         />
+      </section>
+      <section className="review-interactions__comments">
         <p className="review-interactions__comment-count">
           {review.comment_count} comments
         </p>
+        <Expandible>
+          <CommentsPanel />
+        </Expandible>
       </section>
     </article>
   );

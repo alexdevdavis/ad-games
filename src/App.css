@@ -160,17 +160,20 @@ li {
 
 .review-article {
   border: 1px solid lightgray ;
+  border-radius: 1%;
   display: grid;
   grid-template-areas: 'title title'
   'review-details review-details'
+  '. vote'
   'image image'
   'body body'
   'game-details game-details'
-  '. interactions' ;
+  'comments comments' ;
 }
 
 .review-article__title {
   grid-area: title;
+  padding: 5px;
 }
 
 .review-article__byline {
@@ -186,11 +189,13 @@ li {
 
 .review-details-card__date {
   font-weight: 300;
+  margin-bottom: 3px;
 }
 
 .review-article__image {
   width: 100%;
   grid-area: image;
+  margin: 5px 0;
 }
 
 .review-article__body-text {
@@ -201,10 +206,18 @@ li {
   grid-area: game-details;
   padding-top: 1em;
   padding-bottom: 1em;
+  text-align: right;
+  font-weight: 300;
 }
 
-.review-interactions {
-  grid-area: interactions;
+.review-interactions__votes {
+  text-align: right;
+  grid-area: vote;
+  padding: 3px;
+}
+
+.review-interactions__comments {
+  grid-area: comments;
 }
 
 
@@ -231,5 +244,10 @@ li {
 
   .categories-panel__category-card {
     max-width: 60%;
+  }
+
+  .review-article {
+   max-width: 55%;
+   margin: 1% 20%;
   }
 }
