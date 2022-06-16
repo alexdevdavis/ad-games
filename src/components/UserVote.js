@@ -1,8 +1,9 @@
-import { UserContext } from '../contexts/User'
-import React from 'react'
+import { React } from "react";
 
-export default function UserVote() {
+export default function UserVote({ clickFn, isDisabled, btnMessage }) {
   return (
-    <div>UserVote</div>
-  )
+    <button disabled={isDisabled} onClick={clickFn}>
+      {btnMessage}
+    </button>
+  );
 }

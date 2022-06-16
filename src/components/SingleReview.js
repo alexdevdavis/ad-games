@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewById } from "../utils/api";
 import ErrorPanel from "./ErrorPanel";
+import UserVote from "./UserVote";
 
 export default function SingleReview() {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [hasVoted, setHasVoted] = useState(false);
+  const [isVoteDisabled, setIsVoteDisabled] = useState(false);
+  const [voteMessage, setVoteMessage] = useState(
+    hasVoted ? "You've upvoted" : "1up!"
+  );
 
   const { review_id } = useParams();
 
@@ -23,6 +29,11 @@ export default function SingleReview() {
         setError(err);
       });
   }, [review_id]);
+
+  const handleClick = () => {
+    setIsVoteDisabled(hasVoted);
+    setHasVoted((prevVoted) => !prevVoted);
+  };
 
   if (isLoading) {
     return <p>...Loading</p>;
@@ -59,6 +70,15 @@ export default function SingleReview() {
         alt={`${review.owner}'s pictoral representation of this ${review.category} game`}
       />
       <p className="review-article__body-text">{review.review_body}</p>
+      <p className="review-interactions__vote-count">
+        Current votes: {review.votes + (hasVoted ? 1 : 0)}
+        <UserVote
+          className="review-interactions--vote"
+          clickFn={handleClick}
+          isDisabled={isVoteDisabled}
+          btnMessage={voteMessage}
+        />
+      </p>
     </article>
   );
 }
