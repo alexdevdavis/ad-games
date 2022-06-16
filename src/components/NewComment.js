@@ -34,6 +34,7 @@ export default function NewComment({ review, setReview }) {
     <form onSubmit={handleSubmit}>
       <label>
         <input
+          required
           type="textarea"
           name="comment-text"
           value={newComment}
