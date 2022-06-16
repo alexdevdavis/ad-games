@@ -1,19 +1,33 @@
 import { React, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/User";
+import { postComment } from "../utils/api";
 
-export default function NewComment() {
+export default function NewComment({ review, setReview }) {
   const { user } = useContext(UserContext);
   const { review_id } = useParams();
 
   const [newComment, setNewComment] = useState("");
+  const [submitMessage, setSubmitMessage] = useState("post comment");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    console.log(newComment, "<<<------- new comment text");
-    console.log(user.username, "<<<<----------from this user");
-    console.log(review_id, "<<<<<<<<------- for this review");
+    setSubmitMessage(`thanks ${user.username}`);
+    postComment(review_id, user.username, newComment)
+      .then((res) => {
+        setNewComment("");
+        setReview((prevReview) =>
+          Object.assign({}, prevReview, {
+            comment_count: prevReview.comment_count + 1,
+          })
+        );
+        setTimeout(() => {
+          setSubmitMessage("post comment");
+        }, 3000);
+      })
+      .catch((err) => {
+        setSubmitMessage("try again");
+      });
   };
 
   return (
@@ -28,7 +42,7 @@ export default function NewComment() {
           }}
         />
       </label>
-      <button>post comment</button>
+      <button>{submitMessage}</button>
     </form>
   );
 }

@@ -16,7 +16,7 @@ export default function CommentsPanel() {
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [review_id]);
+  }, [review_id, comments]);
 
   if (isLoading) {
     return <p className="loading">Loading ... </p>;
