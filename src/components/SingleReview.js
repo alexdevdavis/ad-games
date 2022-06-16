@@ -8,6 +8,8 @@ export default function SingleReview() {
 
   const { review_id } = useParams();
 
+  const date = new Date(review.created_at).toLocaleString();
+
   useEffect(() => {
     getReviewById(review_id).then(({ review }) => {
       setReview(review);
@@ -26,21 +28,22 @@ export default function SingleReview() {
         <span className="review-article__byline"> || by {review.owner}</span>
       </h3>
       <section className="review-article__game-details-card">
-        Game:
-        <p className="game-details-card__category">{review.category}</p>
+        <p className="game-details-card__category">
+          <span>category: </span> {review.category}
+        </p>
         <p className="game-details-card__designer">
           designed by {review.designer}
         </p>
       </section>
       <section className="review-article__review-details-card">
-        Review:
-        <p className="review-details-card__date">{review.created_at}</p>
+        <p className="review-details-card__date">{date}</p>
         <p className="review-details-card__votes">{review.votes} votes</p>
         <p className="review-details-card__comments">
           {review.comment_count} comments
         </p>
       </section>
       <img
+        className="review-article__image"
         src={review.review_img_url}
         alt={`${review.owner}'s pictoral representation of this ${review.category} game`}
       />

@@ -90,6 +90,12 @@ li {
   padding: 5px;
 }
 
+.reviews-panel__review-card:hover {
+  background-color: rgba(235, 138, 138, 0.652);;
+  @media(min-width: 600px;)
+  transform: scale(1.05);
+}
+
 .review-card {
   display: grid;
   grid-template-columns: 40% 30% 30%;
@@ -101,6 +107,7 @@ li {
     'comments comments votes votes'
     ;
 }
+
 
 .review-card__image {
   grid-area: image;
@@ -148,6 +155,52 @@ li {
   padding: 5px;
   margin-bottom: 5px;
 }
+
+/* SINGLE REVIEW ARTICLE STYLING */
+
+.review-article {
+  border: 1px solid lightgray ;
+  display: grid;
+  grid-template-areas: 'title title'
+  'review-details review-details'
+  'image image'
+  'body body'
+  'game-details game-details' ;
+}
+
+.review-article__title {
+  grid-area: title;
+}
+
+.review-article__byline {
+  grid-area: title;
+  font-weight: 400;
+  color: darkslategray;
+}
+
+.review-article__review-details-card {
+  grid-area: review-details;
+  text-align: end;
+}
+
+.review-details-card__date {
+  font-weight: 300;
+}
+
+.review-article__image {
+  width: 100%;
+  grid-area: image;
+}
+
+.review-article__body-text {
+  grid-area: body;
+}
+
+.review-article__game-details-card {
+  grid-area: game-details;
+  padding-top: 1em;
+}
+
 
 /* Adustments for larger screen widths */
 
