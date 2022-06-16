@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewById } from "../utils/api";
+import ErrorPanel from "./ErrorPanel";
 
 export default function SingleReview() {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const { review_id } = useParams();
 
   const date = new Date(review.created_at).toLocaleString();
 
   useEffect(() => {
-    getReviewById(review_id).then(({ review }) => {
-      setReview(review);
-      setIsLoading(false);
-    });
+    getReviewById(review_id)
+      .then(({ review }) => {
+        setReview(review);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err);
+      });
   }, [review_id]);
 
   if (isLoading) {
     return <p>...Loading</p>;
+  }
+
+  if (error) {
+    return <ErrorPanel error={error} />;
   }
 
   return (
