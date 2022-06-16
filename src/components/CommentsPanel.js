@@ -19,7 +19,7 @@ export default function CommentsPanel() {
   }, [review_id]);
 
   if (isLoading) {
-    return <p className="Loading">Loading ... </p>;
+    return <p className="loading">Loading ... </p>;
   }
 
   return (

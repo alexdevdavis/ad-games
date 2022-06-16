@@ -89,9 +89,11 @@ export default function SingleReview() {
         <p className="review-interactions__comment-count">
           {review.comment_count} comments
         </p>
-        <Expandible>
-          <CommentsPanel />
-        </Expandible>
+        {review.comment_count ? (
+          <Expandible>
+            <CommentsPanel />
+          </Expandible>
+        ) : null}
       </section>
     </article>
   );

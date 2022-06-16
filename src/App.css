@@ -220,6 +220,26 @@ li {
   grid-area: comments;
 }
 
+/* COMMENTS STYLING */
+
+.comment-card {
+  margin: 1%;
+  padding: 5%;
+  border: 0.5px solid slategray;
+  max-width: 70%;
+}
+
+.comment-card__date {
+  font-size: smaller;
+  font-weight: 300;
+  color: slategray;
+  padding: 3px;
+}
+
+.comment-card__votes {
+  margin-top: 3px;
+  text-align: right;
+}
 
 /* Adustments for larger screen widths */
 
