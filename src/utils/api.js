@@ -30,7 +30,7 @@ export const patchUpvote = (review_id, inc_votes) => {
     .then((res) => {});
 };
 
-export const getComment = (review_id) => {
+export const getComments = (review_id) => {
   return adGamesApi.get(`/reviews/${review_id}/comments`).then((res) => {
     return res.data;
   });
