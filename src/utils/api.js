@@ -23,3 +23,9 @@ export const getCategories = () => {
     return res.data;
   });
 };
+
+export const patchUpvote = (review_id, inc_votes) => {
+  return adGamesApi.patch(`/reviews/${review_id}`, { inc_votes }).then((res) => {
+    console.log(res);
+  });
+};

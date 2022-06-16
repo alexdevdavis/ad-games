@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getReviewById } from "../utils/api";
+import { getReviewById, patchUpvote } from "../utils/api";
 import ErrorPanel from "./ErrorPanel";
 import UserVote from "./UserVote";
 
@@ -8,20 +8,19 @@ export default function SingleReview() {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [hasVoted, setHasVoted] = useState(false);
-  const [isVoteDisabled, setIsVoteDisabled] = useState(false);
-  const [voteMessage, setVoteMessage] = useState(
-    hasVoted ? "You've upvoted" : "1up!"
-  );
+  const [userVotes, setUserVotes] = useState(1);
+  const [isVoteDisabled, setIsVoteDisabled] = useState(!userVotes);
+  const [voteMessage, setVoteMessage] = useState("upvote review");
+  const [optimisticVotes, setOptimisticVotes] = useState(0);
 
   const { review_id } = useParams();
-
   const date = new Date(review.created_at).toLocaleString();
 
   useEffect(() => {
     getReviewById(review_id)
       .then(({ review }) => {
         setReview(review);
+        setOptimisticVotes(review.votes);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -31,8 +30,15 @@ export default function SingleReview() {
   }, [review_id]);
 
   const handleClick = () => {
-    setIsVoteDisabled(hasVoted);
-    setHasVoted((prevVoted) => !prevVoted);
+    setOptimisticVotes((prevVotes) => prevVotes + 1);
+    setUserVotes(0);
+    setIsVoteDisabled(true);
+    setVoteMessage("you've upvoted");
+    patchUpvote(review_id, 1).catch((err) => {
+      setUserVotes(1);
+      setVoteMessage("upvote failed");
+      setIsVoteDisabled(false);
+    });
   };
 
   if (isLoading) {
@@ -59,7 +65,7 @@ export default function SingleReview() {
       </section>
       <section className="review-article__review-details-card">
         <p className="review-details-card__date">{date}</p>
-        <p className="review-details-card__votes">{review.votes} votes</p>
+        <p className="review-details-card__votes">{optimisticVotes} votes</p>
         <p className="review-details-card__comments">
           {review.comment_count} comments
         </p>
@@ -71,7 +77,7 @@ export default function SingleReview() {
       />
       <p className="review-article__body-text">{review.review_body}</p>
       <p className="review-interactions__vote-count">
-        Current votes: {review.votes + (hasVoted ? 1 : 0)}
+        Current votes: {optimisticVotes}
         <UserVote
           className="review-interactions--vote"
           clickFn={handleClick}
