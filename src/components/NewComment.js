@@ -9,6 +9,7 @@ export default function NewComment({ review, setReview }) {
 
   const [newComment, setNewComment] = useState("");
   const [submitMessage, setSubmitMessage] = useState("post comment");
+  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,12 +17,14 @@ export default function NewComment({ review, setReview }) {
     postComment(review_id, user.username, newComment)
       .then((res) => {
         setNewComment("");
+        setIsBtnDisabled(true);
         setReview((prevReview) =>
           Object.assign({}, prevReview, {
             comment_count: prevReview.comment_count + 1,
           })
         );
         setTimeout(() => {
+          setIsBtnDisabled(false);
           setSubmitMessage("post comment");
         }, 3000);
       })
@@ -43,7 +46,7 @@ export default function NewComment({ review, setReview }) {
           }}
         />
       </label>
-      <button>{submitMessage}</button>
+      <button disabled={isBtnDisabled}>{submitMessage}</button>
     </form>
   );
 }
