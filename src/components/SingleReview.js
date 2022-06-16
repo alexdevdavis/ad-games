@@ -76,15 +76,20 @@ export default function SingleReview() {
         alt={`${review.owner}'s pictoral representation of this ${review.category} game`}
       />
       <p className="review-article__body-text">{review.review_body}</p>
-      <p className="review-interactions__vote-count">
-        Current votes: {optimisticVotes}
+      <section className="review-interactions">
+        <p className="review-interactions__vote-count">
+          {optimisticVotes} votes
+        </p>
         <UserVote
           className="review-interactions--vote"
           clickFn={handleClick}
           isDisabled={isVoteDisabled}
           btnMessage={voteMessage}
         />
-      </p>
+        <p className="review-interactions__comment-count">
+          {review.comment_count} comments
+        </p>
+      </section>
     </article>
   );
 }
