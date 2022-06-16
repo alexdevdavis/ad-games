@@ -25,7 +25,13 @@ export const getCategories = () => {
 };
 
 export const patchUpvote = (review_id, inc_votes) => {
-  return adGamesApi.patch(`/reviews/${review_id}`, { inc_votes }).then((res) => {
-    console.log(res);
+  return adGamesApi
+    .patch(`/reviews/${review_id}`, { inc_votes })
+    .then((res) => {});
+};
+
+export const getComment = (review_id) => {
+  return adGamesApi.get(`/reviews/${review_id}/comments`).then((res) => {
+    return res.data;
   });
 };
