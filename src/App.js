@@ -10,12 +10,7 @@ import AllUsersPanel from "./components/AllUsersPanel";
 import SingleReview from "./components/SingleReview";
 
 function App() {
-  const [user, setUser] = useState({
-    username: "weegembump",
-    name: "Gemma Bump",
-    avatar_url:
-      "https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553",
-  });
+  const [user, setUser] = useState(null);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

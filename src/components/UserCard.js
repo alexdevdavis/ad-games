@@ -1,6 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function UserCard({user}) {
+export default function UserCard({ user }) {
+  if (!user) {
+    return (
+      <Link to="/users">
+        <p>login</p>
+      </Link>
+    );
+  }
+
   return (
     <section className="user-panel">
       <h3 className="user-panel__username">{user.username}</h3>
@@ -14,5 +23,5 @@ export default function UserCard({user}) {
         <p className="user-panel__user-votes">30 votes</p>
       </div>
     </section>
-  )
+  );
 }

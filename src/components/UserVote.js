@@ -1,8 +1,8 @@
 import { React } from "react";
 
-export default function UserVote({ clickFn, isDisabled, btnMessage }) {
+export default function UserVote({ btnId, clickFn, isDisabled, btnMessage, hasBtn }) {
   return (
-    <button disabled={isDisabled} onClick={clickFn}>
+    <button id={btnId} disabled={isDisabled} onClick={clickFn}>
       {btnMessage}
     </button>
   );

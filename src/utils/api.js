@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const adGamesApi = axios.create({
+export const adGamesApi = axios.create({
   baseURL: "https://ad-games-api.herokuapp.com/api",
 });
 
