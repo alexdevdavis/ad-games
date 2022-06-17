@@ -7,7 +7,9 @@ export default function ReviewsPanel() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+
   const { category_slug } = useParams();
+  
 
   useEffect(() => {
     getReviews(category_slug)
@@ -17,6 +19,9 @@ export default function ReviewsPanel() {
       })
       .catch((err) => console.log(err));
   }, [category_slug]);
+
+
+
 
   if (isLoading) {
     return <p className="Loading">Loading ... </p>;

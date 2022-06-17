@@ -5,7 +5,7 @@ import UserCard from "./UserCard";
 import UserVote from "./UserVote";
 
 export default function UsersPanel() {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -4,7 +4,7 @@ export const adGamesApi = axios.create({
   baseURL: "https://ad-games-api.herokuapp.com/api",
 });
 
-export const getReviews = (category_slug) => {
+export const getReviews = (category_slug, sort_by, order) => {
   return adGamesApi
     .get(`/reviews${category_slug ? `?category=${category_slug}` : ""}`)
     .then((res) => {
