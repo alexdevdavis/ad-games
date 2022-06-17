@@ -6,6 +6,7 @@ import ErrorPanel from "./ErrorPanel";
 import UserVote from "./UserVote";
 import Expandible from "./Expandible";
 import NewComment from "./NewComment";
+import { confetti } from "party-js";
 
 export default function SingleReview() {
   const [review, setReview] = useState({});
@@ -32,7 +33,8 @@ export default function SingleReview() {
       });
   }, [review_id]);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    confetti(event.target);
     setOptimisticVotes((prevVotes) => prevVotes + 1);
     setUserVotes(0);
     setIsVoteDisabled(true);
