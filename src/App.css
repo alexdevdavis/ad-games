@@ -5,6 +5,7 @@
 
 a {
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 li {
@@ -174,6 +175,8 @@ li {
 .review-article__title {
   grid-area: title;
   padding: 5px;
+  margin: 10px;
+  text-align: center;
 }
 
 .review-article__byline {
@@ -190,6 +193,7 @@ li {
 .review-details-card__date {
   font-weight: 300;
   margin-bottom: 3px;
+  text-align: center;
 }
 
 .review-article__image {
@@ -220,10 +224,14 @@ li {
   grid-area: comments;
 }
 
+.review-interactions--new-comment {
+  grid-area: comments;
+}
+
 /* COMMENTS STYLING */
 
 .comment-card {
-  margin: 1%;
+  margin: 5% 15%  ;
   padding: 5%;
   border: 0.5px solid slategray;
   max-width: 70%;
@@ -239,6 +247,37 @@ li {
 .comment-card__votes {
   margin-top: 3px;
   text-align: right;
+}
+
+.new-comment__form {
+  display: grid;
+  grid-template-areas: 
+    'label .'
+    'input submit';
+    grid-template-columns: 60% auto;
+}
+
+.new-comment__label {
+  grid-area: label;
+}
+
+.new-comment__input {
+  width: 100%;
+  grid-area: input;
+}
+
+.new-comment--submit-btn {
+  width: 100%;
+  height: 4rem;
+  grid-area: submit;
+}
+
+.new-comment--submit-btn:hover {
+  background-color: rgb(197, 210, 223);
+  transform: translate(-1%, -1%);
+  box-sizing: border-box;
+  border: none;
+  box-shadow: 5px 5px 5px 5px rgb(198, 198, 172);;
 }
 
 /* Adustments for larger screen widths */

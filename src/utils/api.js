@@ -35,3 +35,11 @@ export const getComments = (review_id) => {
     return res.data;
   });
 };
+
+export const postComment = (review_id, username, body) => {
+  return adGamesApi
+    .post(`/reviews/${review_id}/comments`, { username, body })
+    .then((res) => {
+      return res.data;
+    });
+};
