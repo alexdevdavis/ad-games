@@ -18,7 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<LandingPanel />} />
-          <Route path="/reviews" element={<ReviewsPanel />} />
+          <Route path="/reviews/*" element={<ReviewsPanel />} />
           <Route path="/reviews/:review_id" element={<SingleReview />} />
           <Route path="/categories" element={<CategoriesPanel />} />
           <Route path="/categories/:category_slug" element={<ReviewsPanel />} />
