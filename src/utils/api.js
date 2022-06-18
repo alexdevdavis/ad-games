@@ -5,12 +5,14 @@ export const adGamesApi = axios.create({
 });
 
 export const getReviews = (sort_by, order_by, category_slug) => {
+  let queryStr = `/reviews?sort_by=${sort_by}&order_by=${order_by}`;
+
+  if (category_slug) {
+    queryStr += `&category=${category_slug}`;
+  }
   return adGamesApi
-    .get(
-      `/reviews?sort_by=${sort_by}&order_by=${order_by}${
-        category_slug ? `&category=${category_slug}` : ""
-      }`
-    )
+    .get(queryStr)
+
     .then((res) => {
       return res.data;
     });

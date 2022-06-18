@@ -7,7 +7,7 @@ import SortOrderControls from "./SortOrderControls";
 export default function ReviewsPanel() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sort, setSort] = useState("date");
+  const [sort, setSort] = useState("created_at");
   const [order, setOrder] = useState("DESC");
 
   const { category_slug } = useParams();
