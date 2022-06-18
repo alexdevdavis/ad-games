@@ -8,6 +8,7 @@ import { UserContext } from "../src/contexts/User";
 import CategoriesPanel from "../src/components/CategoriesPanel";
 import AllUsersPanel from "./components/AllUsersPanel";
 import SingleReview from "./components/SingleReview";
+import ErrorPanel from "./components/ErrorPanel";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,6 +24,7 @@ function App() {
           <Route path="/categories" element={<CategoriesPanel />} />
           <Route path="/categories/:category_slug" element={<ReviewsPanel />} />
           <Route path="/users" element={<AllUsersPanel />} />
+          <Route path="/*" element={<ErrorPanel />} />
         </Routes>
       </div>
     </UserContext.Provider>

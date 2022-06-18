@@ -285,6 +285,38 @@ li {
   box-shadow: 5px 5px 5px 5px rgb(198, 198, 172);;
 }
 
+/* ERROR STYLING */
+
+.error-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ceddf2;
+}
+
+.error-panel__apology {
+  padding: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.error-panel__image {
+  max-width: 50%;
+  border-radius: 50%;
+  animation: rotation 15s infinite linear;
+  padding: 20px;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 /* Adustments for larger screen widths */
 
 @media (min-width: 600px) {

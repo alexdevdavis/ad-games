@@ -1,10 +1,12 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../utils/api";
+import ErrorPanel from "./ErrorPanel";
 
 export default function CategoriesPanel() {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     getCategories()
@@ -12,11 +14,15 @@ export default function CategoriesPanel() {
         setCategories(categories);
         setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err));
   }, []);
 
   if (isLoading) {
     return <p>Loading ...</p>;
+  }
+
+  if (error) {
+    return <ErrorPanel error={error} />;
   }
 
   return (

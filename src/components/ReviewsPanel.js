@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 import SortOrderControls from "./SortOrderControls";
+import ErrorPanel from "./ErrorPanel";
 
 export default function ReviewsPanel() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sort, setSort] = useState("created_at");
   const [order, setOrder] = useState("DESC");
+  const [error, setError] = useState(null);
 
   const { category_slug } = useParams();
 
@@ -18,11 +20,15 @@ export default function ReviewsPanel() {
         setReviews(reviews);
         setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err));
   }, [category_slug, sort, order]);
 
   if (isLoading) {
     return <p className="Loading">Loading ... </p>;
+  }
+
+  if (error) {
+    return <ErrorPanel error={error} />;
   }
 
   return (
