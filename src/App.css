@@ -85,6 +85,11 @@ li {
   background-color: rgba(235, 179, 179, 0.652);
 }
 
+.sort-order-controls {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .reviews-panel__review-card {
   border: 2px solid grey;
   margin: 2px;

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getComments } from "../utils/api";
 import CommentCard from "./CommentCard";
 
-export default function CommentsPanel() {
+export default function CommentsPanel({setCommentCount}) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +31,7 @@ export default function CommentsPanel() {
               className="comments-panel__comment-card"
               key={comment.comment_id}
             >
-              <CommentCard data={comment} />
+              <CommentCard data={comment} setCommentCount={setCommentCount} />
             </li>
           );
         })}

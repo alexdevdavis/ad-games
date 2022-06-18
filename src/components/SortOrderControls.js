@@ -10,20 +10,44 @@ export default function SortOrderControls({ sort, setSort, order, setOrder }) {
   };
 
   return (
-    <form>
+    <form className="sort-order-controls">
       <label>
         sort by:
-        <select value={sort} onChange={handleSortChange}>
-          <option value="created_at">date</option>
-          <option value="comment_count">comments</option>
-          <option value="votes">votes</option>
+        <select
+          className="sort-order-controls__select"
+          value={sort}
+          onChange={handleSortChange}
+        >
+          <option
+            className="sort-order-controls__select--option"
+            value="created_at"
+          >
+            date
+          </option>
+          <option
+            className="sort-order-controls__select--option"
+            value="comment_count"
+          >
+            comments
+          </option>
+          <option className="sort-order-controls__select--option" value="votes">
+            votes
+          </option>
         </select>
       </label>
       <label>
         in
-        <select value={order} onChange={handleOrderChange}>
-          <option value="DESC">descending</option>
-          <option value="ASC">ascending</option>
+        <select
+          className="sort-order-controls__select"
+          value={order}
+          onChange={handleOrderChange}
+        >
+          <option className="sort-order-controls__select--option" value="DESC">
+            descending
+          </option>
+          <option className="sort-order-controls__select--option" value="ASC">
+            ascending
+          </option>
         </select>
         order
       </label>

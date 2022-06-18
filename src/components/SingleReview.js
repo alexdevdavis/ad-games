@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { getReviewById, patchUpvote } from "../utils/api";
 import CommentsPanel from "./CommentsPanel";
 import ErrorPanel from "./ErrorPanel";
-import UserVote from "./UserVote";
 import Expandible from "./Expandible";
 import NewComment from "./NewComment";
 import { confetti } from "party-js";
+import ButtonComponent from "./ButtonComponent";
 
 export default function SingleReview() {
   const [review, setReview] = useState({});
@@ -16,6 +16,7 @@ export default function SingleReview() {
   const [isVoteDisabled, setIsVoteDisabled] = useState(!userVotes);
   const [voteMessage, setVoteMessage] = useState("upvote review");
   const [optimisticVotes, setOptimisticVotes] = useState(0);
+  const [commentCount, setCommentCount] = useState();
 
   const { review_id } = useParams();
   const date = new Date(review.created_at).toLocaleString();
@@ -26,12 +27,13 @@ export default function SingleReview() {
         setReview(review);
         setOptimisticVotes(review.votes);
         setIsLoading(false);
+        setCommentCount(review.commentCount);
       })
       .catch((err) => {
         setIsLoading(false);
         setError(err);
       });
-  }, [review_id]);
+  }, [review_id, commentCount]);
 
   const handleClick = (event) => {
     confetti(event.target);
@@ -81,7 +83,7 @@ export default function SingleReview() {
         <p className="review-interactions__vote-count">
           {optimisticVotes} votes
         </p>
-        <UserVote
+        <ButtonComponent
           className="review-interactions--vote"
           clickFn={handleClick}
           isDisabled={isVoteDisabled}
@@ -94,7 +96,7 @@ export default function SingleReview() {
         </p>
         {review.comment_count ? (
           <Expandible>
-            <CommentsPanel />
+            <CommentsPanel setCommentCount={setCommentCount} />
           </Expandible>
         ) : null}
         <NewComment review={review} setReview={setReview} />

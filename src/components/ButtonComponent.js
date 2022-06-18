@@ -1,6 +1,6 @@
 import { React } from "react";
 
-export default function UserVote({ btnId, clickFn, isDisabled, btnMessage, hasBtn }) {
+export default function ButtonComponent({ btnId, clickFn, isDisabled, btnMessage}) {
   return (
     <button id={btnId} disabled={isDisabled} onClick={clickFn}>
       {btnMessage}

@@ -49,3 +49,9 @@ export const postComment = (review_id, username, body) => {
       return res.data;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return adGamesApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res.data;
+  });
+};

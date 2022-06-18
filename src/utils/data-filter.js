@@ -6,14 +6,14 @@ export default function dataFilter(apiReturnedArray, filterKey, filterValue) {
       return datum.hasOwnProperty(filterKey);
     });
   } else if (!filterKey && filterValue) {
-    return arrayToReturn.filter((object) => {
-      return Object.values(object).includes(filterValue);
+    return arrayToReturn.filter((datum) => {
+      return Object.values(datum).includes(filterValue);
     });
   } else if (filterKey && filterValue) {
-    return arrayToReturn.filter((object) => {
+    return arrayToReturn.filter((datum) => {
       return (
-        Object.values(object).includes(filterValue) &&
-        Object.hasOwnProperty(filterKey)
+        Object.values(datum).includes(filterValue) &&
+        datum.hasOwnProperty(filterKey)
       );
     });
   } else {

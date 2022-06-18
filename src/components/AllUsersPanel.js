@@ -2,7 +2,7 @@ import { React, useState, useEffect, useContext } from "react";
 import { adGamesApi } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import UserCard from "./UserCard";
-import UserVote from "./UserVote";
+import ButtonComponent from "./ButtonComponent";
 
 export default function UsersPanel() {
   const { setUser } = useContext(UserContext);
@@ -40,7 +40,7 @@ export default function UsersPanel() {
         return (
           <li className="users-panel__user-card" key={oneUser.username}>
             <UserCard className="users-panel__user-card" user={oneUser} />
-            <UserVote
+            <ButtonComponent
               btnId={oneUser.username}
               clickFn={handleUserClick}
               isDisabled={isBtnDisabled}
