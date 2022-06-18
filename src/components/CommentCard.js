@@ -7,8 +7,12 @@ export default function CommentCard({ data, setCommentCount }) {
   const date = new Date(data.created_at).toLocaleString();
   const { user } = useContext(UserContext);
   const [isUsersComment, setIsUsersComment] = useState(false);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
+  const [deleteMessage, setDeleteMessage] = useState("delete comment");
 
   const handleDeleteClick = (event) => {
+    setDeleteMessage("comment deleted");
+    setIsBtnDisabled(true);
     deleteComment(event.target.id);
     setCommentCount((prevCommentCount) => prevCommentCount - 1);
   };
@@ -28,8 +32,8 @@ export default function CommentCard({ data, setCommentCount }) {
         <ButtonComponent
           btnId={data.comment_id}
           clickFn={handleDeleteClick}
-          isDisabled={false}
-          btnMessage={"delete"}
+          isDisabled={isBtnDisabled}
+          btnMessage={deleteMessage}
         />
       ) : null}
     </article>
