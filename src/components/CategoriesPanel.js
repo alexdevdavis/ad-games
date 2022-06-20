@@ -14,7 +14,11 @@ export default function CategoriesPanel() {
         setCategories(categories);
         setIsLoading(false);
       })
-      .catch((err) => setError(err));
+      .catch((err) => {
+        console.log(err)
+        setIsLoading(false);
+        setError(err);
+      });
   }, []);
 
   if (isLoading) {

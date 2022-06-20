@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
-import UserPanel from "./UserPanel";
+import UserCard from "./UserCard";
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
       <Link to="/">
         <h1 className="header__title">AD Games</h1>
       </Link>
-      <UserPanel />
+      <UserCard />
       <NavBar />
     </header>
   );

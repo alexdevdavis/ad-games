@@ -64,6 +64,11 @@ li {
 
 }
 
+.user-login--button {
+  text-align: center;
+  width: 100%;
+}
+
 .navbar {
   grid-area: links;
   padding: 5px;
@@ -121,6 +126,7 @@ li {
   max-height: auto;
   object-fit: contain;
   object-position: right top;
+  border-radius: 40% 16%;
 }
 
 .review-card__title {
@@ -332,14 +338,14 @@ li {
   }
 
   .reviews-panel__review-card {
-    height: 20%;
     width: 30%;
+    height: auto;
     border-radius: 2%;
     padding: 20px;
   }
 
   .categories-panel__category-card {
-    max-width: 60%;
+    max-width: 600px;
   }
 
   .review-article {

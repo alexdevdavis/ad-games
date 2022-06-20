@@ -7,7 +7,7 @@ export default function ErrorPanel({ error }) {
   useEffect(() => {
     if (error) {
       setErrorStatus(error.response.status);
-      setErrorMessage(error.reponse);
+      setErrorMessage(error.response.statusText);
 
       switch (errorStatus) {
         case 404:
