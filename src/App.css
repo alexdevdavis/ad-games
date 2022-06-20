@@ -3,6 +3,13 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 a {
   text-decoration: none;
   box-sizing: border-box;
@@ -13,16 +20,18 @@ li {
 }
 
 .header {
-  max-height: 200px;
+  width: 100%;
+  max-height: 100px;
   display: grid;
   grid-template-areas: 
-    'title user'
-    'links links';
-  grid-template-columns: 70% auto;
+    'headertitle userpanel'
+    'headerlinks userpanel';
+    grid-template-rows: 50% 50%;
+  grid-template-columns: 65vw 35vw;
 }
 
 .header__title {
-  grid-area: title;
+  grid-area: headertitle;
   padding: 5px;
   text-align:center;
   background-color: rgb(165, 249, 249);
@@ -30,47 +39,59 @@ li {
 
 /* USER STYLING */
 .user-panel {
-  grid-area: user;
+  background-color: rgba(180, 87, 227, 0.52);
+  display: grid;
+  grid-template-areas: 'userimage username'
+  'userimage userbutton';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.user-login__form {
   background-color: rgba(180, 87, 227, 0.52);
   padding-right: 10px;
-  display: grid;
-  grid-template-areas:
-  'username username'
-  'user-image user-stats'
-  'user-image user-stats';
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
 }
 
 .user-panel__username {
   grid-area: username;
-  font-size: 4vw;
+  font-size: 1rem;
   text-align: right;
+  display: inline;
 }
 
 .user-panel__user-image {
+  grid-area: userimage;
+  width: auto;
+  height: auto;
+  visibility:hidden;
   border-radius: 50%;
-  max-width: 50%;
-  grid-area: user-image;
-  margin-left: 20%;
-}
-
-.user-panel__user-comments {
-  grid-area: user-stats;
-  font-size: 2.5vw;
-}
-
-.user-panel__user-votes {
-  grid-area: user-stats;
-  font-size: 2.5vw;
-
 }
 
 .user-login--button {
+  grid-area: userbutton;
+  padding: 0.5em;
+  border-radius: 5%;
+}
+
+.user-panel__user-image {
+  height: 0.5em;
+  width: auto;
+}
+
+.user-login--button {
+  padding: 1em;
   text-align: center;
-  width: 100%;
 }
 
 .navbar {
-  grid-area: links;
+  grid-area: headerlinks;
   padding: 5px;
   background-color: rgb(236, 236, 178);
 }
@@ -85,7 +106,7 @@ li {
 .reviews-panel {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background-color: rgba(235, 179, 179, 0.652);
 }
@@ -111,17 +132,17 @@ li {
   display: grid;
   grid-template-columns: 40% 30% 30%;
   grid-template-areas: 
-    'title title image image'
-    'title title image image'
-    '. . image image'
-    'date date . .'
+    'reviewtitle reviewtitle reviewimage reviewimage'
+    'reviewtitle reviewtitle reviewimage reviewimage'
+    '. . reviewimage reviewimage'
+    'reviewdate reviewdate . .'
     'comments comments votes votes'
     ;
 }
 
 
 .review-card__image {
-  grid-area: image;
+  grid-area: reviewimage;
   width: 100%;
   max-height: auto;
   object-fit: contain;
@@ -130,12 +151,12 @@ li {
 }
 
 .review-card__title {
-  grid-area: title;
+  grid-area: reviewtitle;
 }
 
 .review-card__date {
   font-size: 0.8rem;
-  grid-area: date;
+  grid-area: reviewdate;
   padding-bottom: 8%;
 }
 
@@ -174,24 +195,24 @@ li {
   border: 1px solid lightgray ;
   border-radius: 1%;
   display: grid;
-  grid-template-areas: 'title title'
+  grid-template-areas: 'reviewtitle reviewtitle'
   'review-details review-details'
   '. vote'
-  'image image'
-  'body body'
+  'reviewimage reviewimage'
+  'reviewbody reviewbody'
   'game-details game-details'
   'comments comments' ;
 }
 
 .review-article__title {
-  grid-area: title;
+  grid-area: reviewtitle;
   padding: 5px;
   margin: 10px;
   text-align: center;
 }
 
 .review-article__byline {
-  grid-area: title;
+  grid-area: reviewtitle;
   font-weight: 400;
   color: darkslategray;
 }
@@ -205,16 +226,17 @@ li {
   font-weight: 300;
   margin-bottom: 3px;
   text-align: center;
+  grid-area: reviewdate;
 }
 
 .review-article__image {
   width: 100%;
-  grid-area: image;
+  grid-area: reviewimage;
   margin: 5px 0;
 }
 
 .review-article__body-text {
-  grid-area: body;
+  grid-area: reviewbody;
 }
 
 .review-article__game-details-card {
@@ -308,7 +330,7 @@ li {
 }
 
 .error-panel__image {
-  max-width: 50%;
+  max-width: 50vw;
   border-radius: 50%;
   animation: rotation 15s infinite linear;
   padding: 20px;
@@ -323,16 +345,47 @@ li {
   }
 }
 
+.sort-order-controls{
+  padding: 10px;
+}
+
 /* Adustments for larger screen widths */
 
 @media (min-width: 600px) {
   .header{
+    width: 100vw;
   grid-template-areas: 
-  'title user'
-  'links user';
+  'headertitle userpanel'
+  'headerlinks userpanel';
+  grid-template-columns: 70vw 30vw;
   }
 
+  .user-login__form {
+    grid-area: userpanel;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height:auto;
+  }
+
+  .user-panel__user-image {
+    grid-area: userimage;
+    width: 50px;;
+    height: 50px;
+    visibility:visible;
+    border-radius: 50%;
+  }
+
+  /* .user-panel {
+    grid-area: userpanel;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height:auto;
+  } */
+
   .reviews-panel {
+    position: relative;
     flex-direction: row;
     flex-wrap: wrap;
   }

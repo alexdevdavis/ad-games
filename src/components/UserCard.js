@@ -47,12 +47,12 @@ export default function UserCard() {
   if (user) {
     return (
       <section className="user-panel">
-        <h3 className="user-panel__username">{user.username}</h3>
-        <img
-          className="user-panel__user-image"
-          src={user.avatar_url}
-          alt="user avatar"
-        />
+          <img
+            className="user-panel__user-image"
+            src={user.avatar_url}
+            alt="user avatar"
+          />
+          <p className="user-panel__username">{user.username}</p>
         <ButtonComponent
           className="user-login--button"
           btnId={userSelect}
