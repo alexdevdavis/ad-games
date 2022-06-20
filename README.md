@@ -53,7 +53,7 @@ Click on the review preview card to load a single review. There are a number of 
 5. Note that if the comment is associated with your username, a delete button appears at the bottom of each comment card. This will permanently remove your comment from the list. The page is optimistically rendered here, so users receive instant feedbck from the interaction.
 
 #### Logging out
-Once your appetite for game reviews is satisfied, simply use the logout button in the top right of the screen to disconnect the user from the app.
+Once your appetite for game reviews is satisfied, use the 'log out' button in the top right of the app display to disconnect your user from the app.
 
 #### Viewports
 The AD Games app is developed according to mobile-first principles, but will behave responsively for viewport widths of 600px or greater.
