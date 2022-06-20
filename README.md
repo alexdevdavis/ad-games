@@ -6,7 +6,7 @@ Link to the [deployed version](https://sensational-youtiao-ad9d0b.netlify.app/)
 
 ## Description
 
-Built with React, AD Games is an interface developed to interact with the [AD Games back-end API](https://github.com/alexdevdavis/ad-games) built in Node.j, and serves to demonstrate simple CRUD project functionality.
+Built with React, AD Games is an interface developed to interact with the [AD Games back-end API](https://github.com/alexdevdavis/ad-games) built in Node.js, and serves to demonstrate simple CRUD project functionality.
 
 ## To run the AD Games app locally (requires Node version 17 or later),
 
