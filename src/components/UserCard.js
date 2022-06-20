@@ -2,12 +2,12 @@ import { React, useState, useEffect, useContext } from "react";
 import { adGamesApi } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import ButtonComponent from "./ButtonComponent";
+import ErrorPanel from "./ErrorPanel";
 
 export default function UserCard() {
   const { user, setUser } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [userSelect, setUserSelect] = useState("select user");
-  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [btnMessage, setBtnMessage] = useState("login");
   const [error, setError] = useState(null);
 
@@ -40,6 +40,10 @@ export default function UserCard() {
     setUserSelect(event.target.value);
   };
 
+  if (error) {
+    return <ErrorPanel error={error} />;
+  }
+
   if (user) {
     return (
       <section className="user-panel">
@@ -53,7 +57,6 @@ export default function UserCard() {
           className="user-login--button"
           btnId={userSelect}
           clickFn={handleLogin}
-          isDisabled={isBtnDisabled}
           btnMessage={btnMessage}
         />
       </section>
@@ -81,7 +84,7 @@ export default function UserCard() {
           className="user-login--button"
           btnId={userSelect}
           clickFn={handleLogin}
-          isDisabled={isBtnDisabled}
+          isDisabled={false}
           btnMessage={btnMessage}
         />
       </form>
