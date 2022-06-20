@@ -58,5 +58,5 @@ Once your appetite for game reviews is satisfied, use the 'log out' button in th
 #### Viewports
 The AD Games app is developed according to mobile-first principles, but will behave responsively for viewport widths of 600px or greater.
 
-
+#### Edits and Refactoring
 Thank you for taking the time to check out the AD Games app, and for consulting this README document. Suggested improvements are gratefully received; simply raise a pull request in the ad-games repo on GitHub.
