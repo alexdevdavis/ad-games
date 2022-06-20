@@ -6,7 +6,7 @@ Link to the [deployed version](https://sensational-youtiao-ad9d0b.netlify.app/)
 
 ## Description
 
-Built with React, AD Games is an interface developed to interact with the [AD Games back-end API](https://github.com/alexdevdavis/ad-games) built in Node.j, and serves to demonstrate simple CRUD project functionality.
+Built with React, AD Games is an interface developed to interact with the [AD Games back-end API](https://github.com/alexdevdavis/be-games) built in Node.js, and serves to demonstrate simple CRUD project functionality.
 
 ## To run the AD Games app locally (requires Node version 17 or later),
 
@@ -53,10 +53,10 @@ Click on the review preview card to load a single review. There are a number of 
 5. Note that if the comment is associated with your username, a delete button appears at the bottom of each comment card. This will permanently remove your comment from the list. The page is optimistically rendered here, so users receive instant feedbck from the interaction.
 
 #### Logging out
-Once your appetite for game reviews is satisfied, simply use the logout button in the top right of the screen to disconnect the user from the app.
+Once your appetite for game reviews is satisfied, use the 'log out' button in the top right of the app display to disconnect your user from the app.
 
 #### Viewports
 The AD Games app is developed according to mobile-first principles, but will behave responsively for viewport widths of 600px or greater.
 
-
+#### Edits and Refactoring
 Thank you for taking the time to check out the AD Games app, and for consulting this README document. Suggested improvements are gratefully received; simply raise a pull request in the ad-games repo on GitHub.
